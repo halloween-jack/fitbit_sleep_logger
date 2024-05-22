@@ -11,7 +11,6 @@ import (
 	"net/http"
 	"os"
 	"strings"
-	"time"
 
 	"golang.org/x/oauth2"
 )
@@ -59,9 +58,9 @@ func main() {
 }
 
 type Credentials struct {
-	AccessToken  string    `json:"accessToken"`
-	RefreshToken string    `json:"refreshToken"`
-	ExpiresIn    time.Time `json:"expiresIn"`
+	AccessToken  string `json:"accessToken"`
+	RefreshToken string `json:"refreshToken"`
+	ExpiresIn    int64  `json:"expiresIn"`
 }
 
 func handleConnection(c net.Conn) {
@@ -79,7 +78,7 @@ func handleConnection(c net.Conn) {
 	cr := Credentials{
 		AccessToken:  token.AccessToken,
 		RefreshToken: token.RefreshToken,
-		ExpiresIn:    token.Expiry,
+		ExpiresIn:    token.Expiry.UTC().Unix(),
 	}
 
 	bytes, err := json.Marshal(cr)
