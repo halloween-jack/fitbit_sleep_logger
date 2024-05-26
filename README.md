@@ -1,6 +1,4 @@
-# Fitbit Web APIのトークンを取得するスクリプト
-
-## 使い方
+# 使い方
 
 1. [Fitbitアプリの設定を行う](https://dev.fitbit.com/appsFitbit)
 
